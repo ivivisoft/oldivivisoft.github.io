@@ -69,6 +69,25 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListView(</span><br><span class="line"> children:&lt;Widget&gt;[</span><br><span class="line">  ItemOne(),</span><br><span class="line">  ItemTwo(),</span><br><span class="line">  ItemThree(),</span><br><span class="line"> ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>Usually this should be used with <strong>a small number of children</strong> as the List will<br>also construct the invisible elements in the list and a large amount of elements<br>may render this <strong>inefficient</strong>.</p>
 <h4 id="ListView-builder"><a href="#ListView-builder" class="headerlink" title="ListView.builder()"></a>ListView.builder()</h4><p>The builder() constructor constructs a repeating list of items.The constructor<br>takes two main parameters:An <strong>itemCount</strong> for the number of items in the list<br>and an <strong>itemBuilder</strong> for constructed each list item.</p>
+<p><em>A List contructed using the builder() constructor:</em></p>
+<img src="/2019/02/19/ListView/listview-builder.gif" width="200" height="100">
+<p><em>The general format of the code is:</em></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line"> itemCount:itemCount,</span><br><span class="line"> itemBuilder:(context,position)&#123;</span><br><span class="line">  <span class="keyword">return</span> listItem();</span><br><span class="line"> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The list items are <strong>constructed lazily</strong>,meaning only a specific number of list<br>items are constructed and when a user scrolls ahead,the earlier ones are<br>destroyed.</p>
+<p><strong>Neat trick:</strong> Since the elements are loaded lazily and only the needed number<br>of elements are loaded,we don’t really need an itemCount as a compulsory<br>parameter and the list can be <strong>infinite</strong>.</p>
+<p><code>`dart
+ListView.builder(
+ itemBuilder:(context,position){
+  return Card(
+   child:Padding(
+    padding:const EdgeInsets.all(16.0),
+    child: Text(position.toString(),style:TextStyle(fontSize:22.0))
+   ),
+  );
+ }
+)</code>**</p>
+<p><em>A ListView without the itemCount parameter:</em></p>
+<img src="/2019/02/19/ListView/listview-builder-nocount.gif" width="200" height="100">
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
