@@ -96,8 +96,20 @@
 <p>SliverChildListDelegate accepts a direct list of children whereas<br>SliverChildBuilderDelegate accepts an IndexedWidgetBuilder(The builder<br>function we use).</p>
 <p>You can either use or subclass these for building your own delegates</p>
 <blockquote>
-<p>ListView.builder is essentially a ListView.custom with a SliverChildBuilderDelegate</p>
+<p>ListView.builder is essentially a ListView.custom with a SliverChildBuilderDelegate<br>The ListView default constructor behaves like a ListView.custom with a SliverChildListDelegate</p>
 </blockquote>
+<p>Now that we’re done with the types of ListViews,let’s take a look at ScrollPhysics.</p>
+<h2 id="Exploring-ScrollPhysics"><a href="#Exploring-ScrollPhysics" class="headerlink" title="Exploring ScrollPhysics"></a>Exploring ScrollPhysics</h2><p>To control the way scrolling takes place,we set the <strong>physics</strong> parameter in the ListView<br>constructor.The different types of physics are:</p>
+<h3 id="NeverScrollablePhysics"><a href="#NeverScrollablePhysics" class="headerlink" title="NeverScrollablePhysics"></a>NeverScrollablePhysics</h3><p>NeverScrollablePhysics <strong>renders the list non-scrollable</strong>.Use this to disable<br>scrolling of the ListView completely.</p>
+<h3 id="BouncingScrollPhysics"><a href="#BouncingScrollPhysics" class="headerlink" title="BouncingScrollPhysics"></a>BouncingScrollPhysics</h3><p>BouncingScrollPhysics <strong>bound back</strong> the list when the list ends.A similar<br>effect is used on IOS.</p>
+<img src="/2019/02/19/ListView/scrolling_bound.gif" width="200" height="100">
+<h3 id="ClampingScrollPhysics"><a href="#ClampingScrollPhysics" class="headerlink" title="ClampingScrollPhysics"></a>ClampingScrollPhysics</h3><p>This is the default scrolling physics used on Android.The list stops at the end<br>and gives an effect indicating it.</p>
+<img src="/2019/02/19/ListView/scrolling_clamp.gif" width="200" height="100">
+<h3 id="FixedExtentScrollPhysics"><a href="#FixedExtentScrollPhysics" class="headerlink" title="FixedExtentScrollPhysics"></a>FixedExtentScrollPhysics</h3><p>This is slightly different than the other ones in this list in the sense that is only<br>works with <strong>FixedExtendScrollControllers</strong> and lists that use them.For an<br>example we will take a ListWheelScrollView which makes a wheel-like list.</p>
+<p>FixedExtentScrollPhysics <strong>Only scrolls to items instead of any offset in between</strong>.</p>
+<img src="/2019/02/19/ListView/scrolling_fixed_extent.gif" width="200" height="100" title="%** *The code for this example is incredibly simple:* undefined ## A few more things to know ### How to keep elements that get destroy alive in a list? Flutter provides a KeepAlive() widget which keeps an item alive which would have otherwise be destroyed. In a list,elements are wrapped by default in a AutomaticKeepAlive widget. {% asset_img listview_api.png 200 100">
+<p>AutomaticKeepAlives can be disabled by setting the addAutomaticKeepAlives<br>field to false.This is useful in cases where the elements don’t need to be kept<br>alive or for a custom implementation of KeepAlive.</p>
+<h3 id="Why-does-my-ListView-have-space-between-the-list-and-the-outer-Widget"><a href="#Why-does-my-ListView-have-space-between-the-list-and-the-outer-Widget" class="headerlink" title="Why does my ListView have space between the list and the outer Widget?"></a>Why does my ListView have space between the list and the outer Widget?</h3><p>By default,a ListView has padding between it and the outer widget,to remove<br>it,set padding to EdgeInsets.all(0.0).</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
