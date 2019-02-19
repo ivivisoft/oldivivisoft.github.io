@@ -56,10 +56,10 @@
 <h2 id="Exploring-the-types-of-ListView"><a href="#Exploring-the-types-of-ListView" class="headerlink" title="Exploring the types of ListView"></a>Exploring the types of ListView</h2><p>We’ll start with looking at the types of ListViews and later look at the other<br>features and neat modifications for it.</p>
 <p>Let’s look at the types of ListViews there are:</p>
 <ol>
-<li>ListView</li>
-<li>ListView.builder</li>
-<li>ListView.separated</li>
-<li>ListView.custom</li>
+<li><strong>ListView</strong></li>
+<li><strong>ListView.builder</strong></li>
+<li><strong>ListView.separated</strong></li>
+<li><strong>ListView.custom</strong></li>
 </ol>
 <p>Let’s go around exploring these types one by one:</p>
 <h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><p>This is the default constructor of the ListView class.A ListView simply takes a<br>list of children and makes it scrollable.</p>
@@ -85,6 +85,19 @@
 <p><strong>Note That:</strong> the infinite count discussed in the earlier constructor cannot be used<br>here and this constructor enforces an itemCount.</p>
 <p><em>The code for this type goes as:</em></p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ListView.separated(</span><br><span class="line">          itemBuilder: (context, position) =&gt; Card(</span><br><span class="line">                child: Padding(</span><br><span class="line">                  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">16.0</span>),</span><br><span class="line">                  child: Text(</span><br><span class="line">                    <span class="string">'main list <span class="subst">$position</span>'</span>,</span><br><span class="line">                    style:</span><br><span class="line">                        TextStyle(fontSize: <span class="number">22.0</span>, fontWeight: FontWeight.bold),</span><br><span class="line">                  ),</span><br><span class="line">                ),</span><br><span class="line">              ),</span><br><span class="line">          separatorBuilder: (context, position) &#123;</span><br><span class="line">            <span class="keyword">if</span> (position % <span class="number">2</span> == <span class="number">0</span> &amp;&amp; position &lt;= <span class="number">4</span>) &#123;</span><br><span class="line">              <span class="keyword">return</span> Card(</span><br><span class="line">                child: Padding(</span><br><span class="line">                  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">16.0</span>),</span><br><span class="line">                  child: Text(</span><br><span class="line">                    <span class="string">'Separator list <span class="subst">$position</span>'</span>,</span><br><span class="line">                    style: TextStyle(fontSize: <span class="number">22.0</span>, color: Colors.redAccent),</span><br><span class="line">                  ),</span><br><span class="line">                ),</span><br><span class="line">              );</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">return</span> Container();</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          itemCount: <span class="number">10</span>,</span><br><span class="line">        ));</span><br></pre></td></tr></table></figure>
+<p>This type of list lets you dynamically define separators,have different types of<br>separators for different types of items,add or remove separators when need,etc.</p>
+<p>This implementation can also be used for <strong>inserting other types of elements</strong><br>(advertisements for example** easily and without any modification to the main<br>list in the middle of the list items.</p>
+<p><strong>Note:</strong> The separator list length is <strong>1 less</strong> than the item list as a separator does<br>not exist after the last element.</p>
+<h3 id="ListView-custom"><a href="#ListView-custom" class="headerlink" title="ListView.custom()"></a>ListView.custom()</h3><p>The custom() constructor as its name suggests,lets you build ListViews with custom<br>functionality for how the children of the list are build.The main parameter required for<br>this is a SliverChildDelegate which builds the items.<br>The types of SliverChildDelegtes are:</p>
+<ol>
+<li><strong>SliverChildListDelegate</strong></li>
+<li><strong>SliverChildBuilderDelegate</strong></li>
+</ol>
+<p>SliverChildListDelegate accepts a direct list of children whereas<br>SliverChildBuilderDelegate accepts an IndexedWidgetBuilder(The builder<br>function we use).</p>
+<p>You can either use or subclass these for building your own delegates</p>
+<blockquote>
+<p>ListView.builder is essentially a ListView.custom with a SliverChildBuilderDelegate</p>
+</blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
