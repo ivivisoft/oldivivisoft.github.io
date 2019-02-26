@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>whoami - Andy Space</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Andy ivivisoft,"> 
+    
+    <meta name="author" content="Andy Zhang"> 
+    <link rel="alternative" href="atom.xml" title="Andy Space" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Andy Space</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ivivisoft.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">A Deep Dive Into Inbuilt Animation in Flutter</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">A Deep Dive Into Inbuilt Animation in Flutter</h1>
+        <div class="stuff">
+            <span>二月 26, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Flutter/">Flutter</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="Implicitly-Animated-Widgets-in-Flutter"><a href="#Implicitly-Animated-Widgets-in-Flutter" class="headerlink" title="Implicitly Animated Widgets in Flutter"></a>Implicitly Animated Widgets in Flutter</h3><p>Animations are quite easy to do in Flutter and a lot of complexity can be<br>achieved with a lot of less effort than native Android.This is usually achieved<br>through ways like defining an <strong>Animation</strong> + an <strong>AnimationController</strong>.But there<br>are <strong>inbuilt widgets</strong> which even reduce this and make animations as easy as<br><strong>simply changing values!</strong></p>
+<h3 id="AnimatedContainer"><a href="#AnimatedContainer" class="headerlink" title="AnimatedContainer"></a>AnimatedContainer</h3><img src="/2019/02/26/Animation/animated_container.gif" width="200" height="100">
+<p><br><br>An AnimatedContainer automatically transitions to the values defined(colors,<br>size etc.)instead of just instantaneously changing to them.The GIF given<br>above is an example of an AnimatedContainer.</p>
+<p>The code will be:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepDiveHome</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  _DeepDiveHomeState createState() =&gt; _DeepDiveHomeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_DeepDiveHomeState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">DeepDiveHome</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myColor = Colors.blue;</span><br><span class="line">  <span class="keyword">var</span> myHeight = <span class="number">150.0</span>;</span><br><span class="line">  <span class="keyword">var</span> myWidth = <span class="number">150.0</span>;</span><br><span class="line">  <span class="built_in">bool</span> isShrine = <span class="keyword">false</span>;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        body: Center(</span><br><span class="line">      child: AnimatedContainer(</span><br><span class="line">        duration: <span class="built_in">Duration</span>(seconds: <span class="number">1</span>),</span><br><span class="line">        child:</span><br><span class="line">            ButtonBar(alignment: MainAxisAlignment.center, children: &lt;Widget&gt;[</span><br><span class="line">          RaisedButton(</span><br><span class="line">            elevation: <span class="number">5.0</span>,</span><br><span class="line">            color: Colors.green,</span><br><span class="line">            child: Text(</span><br><span class="line">              <span class="string">'Animate!'</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                  color: Colors.white,</span><br><span class="line">                  fontSize: <span class="number">15.0</span>,</span><br><span class="line">                  fontWeight: FontWeight.bold),</span><br><span class="line">            ),</span><br><span class="line">            onPressed: () &#123;</span><br><span class="line">              <span class="keyword">if</span> (!isShrine) &#123;</span><br><span class="line">                myColor = Colors.green;</span><br><span class="line">                myHeight = MediaQuery.of(context).size.height;</span><br><span class="line">                myWidth = MediaQuery.of(context).size.width;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                myColor = Colors.blue;</span><br><span class="line">                myHeight = <span class="number">150.0</span>;</span><br><span class="line">                myWidth = <span class="number">150.0</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              isShrine = !isShrine;</span><br><span class="line">              setState(() &#123;&#125;);</span><br><span class="line">            &#125;,</span><br><span class="line">          ),</span><br><span class="line">        ]),</span><br><span class="line">        color: myColor,</span><br><span class="line">        height: myHeight,</span><br><span class="line">        width: myWidth,</span><br><span class="line">      ),</span><br><span class="line">    ));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In normal cases,you would define a controller and a <strong>Tween<double></double></strong> and a<br><strong>ColorTween</strong> to achieve the animation in the GIF above.But with<br><strong>AnimatedContainer</strong>,all you have to do is:</p>
+<ol>
+<li><strong>Set a duration for the animation</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duration: <span class="built_in">Duration</span>(seconds: <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>Change values (Change color and size to your values)</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myColor = Colors.green;</span><br><span class="line">myHeight = MediaQuery.of(context).size.height;</span><br><span class="line">myWidth = MediaQuery.of(context).size.width;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>setState()</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setState(()&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>No controller.No Tweens</strong></p>
+<p>The moment you change the values of myColor,myHeight,myWidth and<br>setState(),the container <strong>automatically transitions to the values</strong> instead of<br><strong>changing directly to that value.</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onPressed:()&#123;</span><br><span class="line"> myColor = Colors.green;</span><br><span class="line"> myHeight = MediaQuery.of(context).size.height;</span><br><span class="line"> myWidth = MediaQuery.of(context).size.width;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>At the beginning,myColor was set Colors.blue.When we change it to Colors.green<br>and setState to rebuild it,it transitions from blue to green without any Tweens<br>used.(<strong>Note:Tweens are used implicitly but do not need to be user defined.</strong>)</p>
+<p>From what I’ve seen,a lot of developers don’t seem to be aware of these<br>implicitly animated widgets and waste time when it’s not necessary.Obviously<br>there will be cases where you might want a different kind of behaviour,but<br>most times,AnimatedContainer does the job.</p>
+<h3 id="Hero-Animations"><a href="#Hero-Animations" class="headerlink" title="Hero Animations"></a>Hero Animations</h3><img src="/2019/02/26/Animation/hero_animation.gif" width="200" height="100">
+<p><br><br>A Hero animation makes an element from one page “fly” to the second and automatically<br>adjust to the size of the same element on the second page.This makes something like a<br>list in an app which has a detail page that much more interesting.</p>
+<p>Flutter makes it incredibly easy to implement Hero Animation.All you have to do is<br><strong>wrap the element you want to make a ‘Hero’ with a Hero widget and supplu to it a tag.</strong><br>If you want to do this in a list,you need to supply a different tag for each element,<br>which I just usually set to “hero” + position of element in the list.</p>
+<p>The code will be:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepDiveHome</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  _DeepDiveHomeState createState() =&gt; _DeepDiveHomeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_DeepDiveHomeState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">DeepDiveHome</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      body: Column(</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Padding(</span><br><span class="line">            padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">            child: Card(</span><br><span class="line">              child: InkWell(</span><br><span class="line">                onTap: () &#123;</span><br><span class="line">                  Navigator.push(</span><br><span class="line">                      context,</span><br><span class="line">                      MaterialPageRoute(</span><br><span class="line">                          builder: (context) =&gt; HeroDetailPage()));</span><br><span class="line">                &#125;,</span><br><span class="line">                splashColor: Colors.red,</span><br><span class="line">                child: Padding(</span><br><span class="line">                  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">                  child: Row(</span><br><span class="line">                    children: &lt;Widget&gt;[</span><br><span class="line">                      Expanded(</span><br><span class="line">                        child: Hero(</span><br><span class="line">                          tag: <span class="string">'heroTag'</span>,</span><br><span class="line">                          child: Container(</span><br><span class="line">                            color: Colors.red,</span><br><span class="line">                            height: <span class="number">100.0</span>,</span><br><span class="line">                          ),</span><br><span class="line">                        ),</span><br><span class="line">                      ),</span><br><span class="line">                      Expanded(</span><br><span class="line">                        child: Center(</span><br><span class="line">                          child: Text(<span class="string">'Red'</span>),</span><br><span class="line">                        ),</span><br><span class="line">                      )</span><br><span class="line">                    ],</span><br><span class="line">                  ),</span><br><span class="line">                ),</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">          )</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeroDetailPage</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: Column(</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Expanded(</span><br><span class="line">            child: Hero(</span><br><span class="line">              tag: <span class="string">'heroTag'</span>,</span><br><span class="line">              child: Container(</span><br><span class="line">                color: Colors.red,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">          Expanded(</span><br><span class="line">              child: Container(</span><br><span class="line">            child: Center(</span><br><span class="line">                child: Text(</span><br><span class="line">              <span class="string">'This is the color red.'</span>,</span><br><span class="line">              style: TextStyle(fontSize: <span class="number">30.0</span>),</span><br><span class="line">            )),</span><br><span class="line">          ))</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>That’s it!</p>
+<p>The colored container automatically files and expands to the latter’s size.</p>
+<h3 id="AnimatedCrossFade"><a href="#AnimatedCrossFade" class="headerlink" title="AnimatedCrossFade"></a>AnimatedCrossFade</h3><img src="/2019/02/26/Animation/animated_crossfade.gif" width="200" height="100">
+<p><br></p>
+<p>A CrossFade is a <strong>smooth transition from one widget to another</strong> with a given<br>duration.Flutter makes this easy using a AnimatedCrossFade widget.</p>
+<p>This is how an AnimatedCrossFade is defined:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AnimatedCrossFade(</span><br><span class="line"> firstChild:<span class="comment">//Your first element here,</span></span><br><span class="line"> secondChild:<span class="comment">//Element after transition,</span></span><br><span class="line"> crossFadeState:<span class="comment">//State of the transition,</span></span><br><span class="line"> duration:<span class="built_in">Duration</span>(milliseconds:<span class="number">1500</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>We supply:</p>
+<ol>
+<li><strong>The widget before transition</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">firstChild:Container(</span><br><span class="line"> child:Padding(</span><br><span class="line">  padding:<span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">  child:CircularProgressIndicator(),</span><br><span class="line"> ),</span><br><span class="line"> height:<span class="number">200.0</span>,</span><br><span class="line"> width:<span class="number">200.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>The widget after transition</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">secondChild:Container(</span><br><span class="line"> child:Padding(</span><br><span class="line">  padding:<span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">  child:FlutterLogo(),</span><br><span class="line"> ),</span><br><span class="line"> height:<span class="number">100.0</span>,</span><br><span class="line"> width:<span class="number">200.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>The state of transition (If the transition has happened already or not)</strong></li>
+</ol>
+<p>(Here,firstStateEnabled is a boolean we can change to change the state.)</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crossFadeState:firstStateEnabled</span><br><span class="line">?CrossFadeState.showFirst</span><br><span class="line">:CrossFadeState.showSecond,</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>The duration of the transition</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duration:<span class="built_in">Duration</span>(milliseconds:<span class="number">1500</span>),</span><br></pre></td></tr></table></figure>
+<p>This amount of code is enough to give us the above example.The transition is<br>simply triggered by changing the crossFadeState.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepDiveHome</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  _DeepDiveHomeState createState() =&gt; _DeepDiveHomeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_DeepDiveHomeState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">DeepDiveHome</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> firstStateEnabled = <span class="keyword">false</span>;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            AnimatedCrossFade(</span><br><span class="line">              firstChild: Container(</span><br><span class="line">                child: Padding(</span><br><span class="line">                  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">                  child: CircularProgressIndicator(),</span><br><span class="line">                ),</span><br><span class="line">                height: <span class="number">200</span>,</span><br><span class="line">                width: <span class="number">200.0</span>,</span><br><span class="line">              ),</span><br><span class="line">              secondChild: Container(</span><br><span class="line">                child: Padding(</span><br><span class="line">                  padding: EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">                  child: FlutterLogo(),</span><br><span class="line">                ),</span><br><span class="line">                height: <span class="number">200.0</span>,</span><br><span class="line">                width: <span class="number">200.0</span>,</span><br><span class="line">              ),</span><br><span class="line">              crossFadeState: firstStateEnabled</span><br><span class="line">                  ? CrossFadeState.showFirst</span><br><span class="line">                  : CrossFadeState.showSecond,</span><br><span class="line">              duration: <span class="built_in">Duration</span>(milliseconds: <span class="number">1500</span>),</span><br><span class="line">            ),</span><br><span class="line">            Padding(</span><br><span class="line">              padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">32.0</span>),</span><br><span class="line">              child: RaisedButton(</span><br><span class="line">                color: Colors.blue,</span><br><span class="line">                child: Text(</span><br><span class="line">                  <span class="string">'Trigger crossfade'</span>,</span><br><span class="line">                  style: TextStyle(</span><br><span class="line">                    color: Colors.white,</span><br><span class="line">                    fontSize: <span class="number">20.0</span>,</span><br><span class="line">                    fontWeight: FontWeight.bold,</span><br><span class="line">                  ),</span><br><span class="line">                ),</span><br><span class="line">                onPressed: () &#123;</span><br><span class="line">                  setState(() &#123;</span><br><span class="line">                    firstStateEnabled = !firstStateEnabled;</span><br><span class="line">                  &#125;);</span><br><span class="line">                &#125;,</span><br><span class="line">              ),</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Note:If the two children are of different sizes then it automatically transitions<br>from one size to the other.</strong></p>
+<img src="/2019/02/26/Animation/animation_crossfade_size.gif" width="200" height="100">
+<h3 id="AnimatedOpacity"><a href="#AnimatedOpacity" class="headerlink" title="AnimatedOpacity"></a>AnimatedOpacity</h3><img src="/2019/02/26/Animation/animation_opacity.gif" width="200" height="100">
+<p><br><br>AnimatedOpacity animates changes in opacity,i.e. how visible a widget is.An Opacity<br>of 0 makes a widget completely transparent,while a 1 opacity is fully visible.</p>
+<p>AnimatedOpacity is declared as:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AnimatedOpacity(</span><br><span class="line"> opacity:<span class="comment">//Your variable holding opacity value,</span></span><br><span class="line"> duration:<span class="comment">//Duration of the transition,</span></span><br><span class="line"> child:FlutterLogo(),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Staying similar to the last few widgets,in AnimatedOpacity,you change the opacity<br>and setState and it <strong>automatically animates the opacity change.</strong></p>
+<p>In the above example,it is declared as:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AnimatedOpacity(</span><br><span class="line"> child:FlutterLogo(size:<span class="number">100.0</span>,),</span><br><span class="line"> opacity:myOpacity,</span><br><span class="line"> duration:<span class="built_in">Duration</span>(seconds:<span class="number">1</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>When the button is clicked,it simply changes opacity and sets state.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onPressed(</span><br><span class="line"> myOpacity = <span class="number">0.0</span>;</span><br><span class="line"> setState(()&#123;&#125;);</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The above example’s code is here:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepDiveHome</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  _DeepDiveHomeState createState() =&gt; _DeepDiveHomeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_DeepDiveHomeState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">DeepDiveHome</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myOpacity = <span class="number">1.0</span>;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Padding(</span><br><span class="line">              padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">              child: AnimatedOpacity(</span><br><span class="line">                child: FlutterLogo(</span><br><span class="line">                  size: <span class="number">100.0</span>,</span><br><span class="line">                ),</span><br><span class="line">                opacity: myOpacity,</span><br><span class="line">                duration: <span class="built_in">Duration</span>(seconds: <span class="number">1</span>),</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            RaisedButton(</span><br><span class="line">              color: Colors.blue,</span><br><span class="line">              child: Text(</span><br><span class="line">                <span class="string">'Click here to change opacity'</span>,</span><br><span class="line">                style: TextStyle(</span><br><span class="line">                  color: Colors.white,</span><br><span class="line">                  fontSize: <span class="number">20.0</span>,</span><br><span class="line">                  fontWeight: FontWeight.bold,</span><br><span class="line">                ),</span><br><span class="line">              ),</span><br><span class="line">              onPressed: () &#123;</span><br><span class="line">                myOpacity = <span class="number">0.0</span>;</span><br><span class="line">                setState(() &#123;&#125;);</span><br><span class="line">              &#125;,</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="true" data-ci="3219b331c6fa32d69c16" data-cs="943ecde7ea4b66cc0a98ecbb5e027b06db8f5508" data-r="ivivisoft.github.io" data-o="ivivisoft" data-a="ivivisoft" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
