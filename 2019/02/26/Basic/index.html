@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>whoami - Andy Space</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Andy ivivisoft,"> 
+    
+    <meta name="author" content="Andy Zhang"> 
+    <link rel="alternative" href="atom.xml" title="Andy Space" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Andy Space</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://ivivisoft.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">The Flutter Series:Basic Widgets and Layout</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">The Flutter Series:Basic Widgets and Layout</h1>
+        <div class="stuff">
+            <span>二月 26, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Flutter/">Flutter</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="Layouts-in-Flutter"><a href="#Layouts-in-Flutter" class="headerlink" title="Layouts in Flutter"></a>Layouts in Flutter</h3><p>Layouts in Flutter consist of a hierarchy of widgets with the outer widgets<br>usually deal with aligment and structure whereas the inner elements are<br>usually the visible elements on the page itself,like buttons and images,etc.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Center(</span><br><span class="line"> child: Column(</span><br><span class="line">   mainAxisAlignment:MainAxisAlignment.center,</span><br><span class="line">   children:&lt;Widget&gt;[</span><br><span class="line">    Text(</span><br><span class="line">    <span class="string">'You have pushed the button this many times:'</span>,</span><br><span class="line">    ),</span><br><span class="line">    Text(</span><br><span class="line">    <span class="string">'<span class="subst">$_counter</span>'</span>,</span><br><span class="line">    style:Theme.of(context).textTheme.display1,</span><br><span class="line">    ),</span><br><span class="line">   ]</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>In this example,there are three widgets:<strong>Center,Column</strong> and <strong>Text.</strong></p>
+<p>The <strong>Center</strong> and <strong>Column</strong> deal with structuring and aligning the elements<br>inside them whereas the <strong>Text</strong> is the only directly visible element in the app for<br>a user.</p>
+<p>A widget usually has properties for changing alignment,styles and attributes.</p>
+<p>Let us now dive into individual widgets and see what they do.</p>
+<p>We will split widgets into two rough categories:</p>
+<ol>
+<li><strong>Visible Element Widgets</strong></li>
+<li><strong>Structuring and Alignment Widgets</strong></li>
+</ol>
+<h3 id="Visible-Element-Widgets"><a href="#Visible-Element-Widgets" class="headerlink" title="Visible Element Widgets"></a>Visible Element Widgets</h3><p>These are a few commonly used Widgets</p>
+<ol>
+<li><strong>Text</strong></li>
+</ol>
+<p>A Text widget simply holds some text.<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">  <span class="string">'Hello World!'</span>,</span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">  style: TextStyle(fontWeight: FontWeight.bold),</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>The text can be aligned using the <em>textAlign</em> property.The style property allows<br>customisation of the text including font,font size,font weight,color,letter spacing<br>and a whole lot more.</p>
+<ol start="2">
+<li><strong>Button</strong></li>
+</ol>
+<p>A Button widget allows a user to perform some action on click.Flutter does not have<br>a direct “Button” widget,instead,it has types of button like a FlatButton and a<br>RaiseButton.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line"> child:Text(<span class="string">'Click here'</span>),</span><br><span class="line"> onPressed:()&#123;</span><br><span class="line"> <span class="comment">// Do something here</span></span><br><span class="line"> &#125;</span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
+<p>The FlatButton does not stand out from the surrounding:</p>
+<img src="/2019/02/26/Basic/flatbutton.png" width="200" height="100">
+<p><br><br>The onPressed property allows some action to be performed when the button is clicked.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> RaisedButton(</span><br><span class="line">  child: Text(<span class="string">'Click here'</span>),</span><br><span class="line">  elevation: <span class="number">5.0</span>,</span><br><span class="line">  onPressed:()&#123;</span><br><span class="line">  <span class="comment">//Do something here</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The RasiedButton is raised from the environment:</p>
+<img src="/2019/02/26/Basic/rasiedbutton.png" width="200" height="100">
+<p><br><br>Changing the elevation of the RasiedButton changes how much it stands out.</p>
+<ol start="3">
+<li><strong>Image</strong></li>
+</ol>
+<p>The Image widget holds an image and can fetch it from multiple sources like<br>assets or even directly from a URL.In normal native Android this would have<br>required a secondary library like Picasso.</p>
+<ol start="4">
+<li><strong>Icon</strong></li>
+</ol>
+<p>The icon widget is a container for an icon in Flutter.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Icon(</span><br><span class="line"> Icons.add,</span><br><span class="line"> size:<span class="number">36.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>It also contains a size attribute to enlarge the icon.</p>
+<img src="/2019/02/26/Basic/icon.png" width="200" height="100">
+<h3 id="Structuring-and-Alignment-Widgets"><a href="#Structuring-and-Alignment-Widgets" class="headerlink" title="Structuring and Alignment Widgets"></a>Structuring and Alignment Widgets</h3><ol>
+<li><strong>Column</strong></li>
+</ol>
+<p>A Column is a widget which arranges all its children widgets in a vertical<br>stack.It can space the widgets according to the <strong>mainAxisAlignment</strong> and<br><strong>crossAxisAlignment</strong> property.Here the “main axis” is the vertical axis and the<br>“cross axis” is the horizontal axis.</p>
+<p>Lets construct a column of 3 text widget.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Column(</span><br><span class="line"> mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line"> chilren:&lt;Widget&gt;[</span><br><span class="line">  Text(<span class="string">'Element 1'</span>),</span><br><span class="line">  Text(<span class="string">'Element 2'</span>),</span><br><span class="line">  Text(<span class="string">'Element 3'</span>),</span><br><span class="line"> ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The column has 3 text widgets inside it and the mainAxisAlignment is set to<br>‘center’.</p>
+<p>This is how it looks like:</p>
+<img src="/2019/02/26/Basic/column.png" width="200" height="100">
+<p><br><br>Because of the mainAxisAlignment being center,it centers all the widgets.<br>Let’s try something else.Let’s set mainAxisAlignment to spaceBetween.</p>
+<img src="/2019/02/26/Basic/column_space_between.png" width="200" height="100">
+<p><br><br>Now they’re too far apart,let’s try spaceEvenly.</p>
+<img src="/2019/02/26/Basic/column_space_evenly.png" width="200" height="100">
+<p><br><br>To space it in between the left and right sides of the screen,you have to use<br><strong>crossAxisAlignment</strong>.</p>
+<ol start="2">
+<li><strong>Row</strong></li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Row(</span><br><span class="line"> mainAxisAlignment:MainAxisAlignment.spaceEvenly,</span><br><span class="line"> children: &lt;Widget&gt;[</span><br><span class="line">  Text(<span class="string">'Element 1'</span>),</span><br><span class="line">  Text(<span class="string">'Element 2'</span>),</span><br><span class="line">  Text(<span class="string">'Element 3'</span>),</span><br><span class="line"> </span><br><span class="line"> ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>A Row is the same as a column but constructs a horizontal row of widgets<br>rather than a column.The main difference here is the main axis is the<br>horizontal axis rather than the vertical one.The cross axis is the veritcal axis.</p>
+<img src="/2019/02/26/Basic/row.png" width="200" height="100">
+<p><br></p>
+<p>3.<strong>Center</strong></p>
+<p>A Center widget simply centers the child inside it.All the previous examples<br>included rows and columns that were inside a center widget.If the column was<br>not inside a center widget,it would shift to the left.Here’s an example:</p>
+<p>Column without a center widget:</p>
+<img src="/2019/02/26/Basic/column_nocenter.png" width="200" height="100">
+<p><br><br>Column with a center widget:</p>
+<img src="/2019/02/26/Basic/column_with_center.png" width="200" height="100">
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Center(</span><br><span class="line"> child: Row(</span><br><span class="line">  mainAxisAlignment:MainAxisAlignment.spaceEvenly,</span><br><span class="line">  children:&lt;Widget&gt;[</span><br><span class="line">   Text(<span class="string">'Element 1'</span>),</span><br><span class="line">   Text(<span class="string">'Element 2'</span>),</span><br><span class="line">   Text(<span class="string">'Element 3'</span>),</span><br><span class="line">  ]</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>A Center widget simply takes a child and centers it in the available space it is in.</p>
+<ol start="4">
+<li><strong>Padding</strong></li>
+</ol>
+<p>Unlike in normal Android development wehere every view has its own padding attribute,<br>padding is a widget that wraps other widgets to give them padding in all or specified<br>directions.</p>
+<p>This gives the text widget a padding of 8.0 in all directions.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Padding(</span><br><span class="line"> padding:<span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line"> child: Text(<span class="string">'Element 1'</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Padding in specific directions is also allowed.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Padding(</span><br><span class="line"> padding:<span class="keyword">const</span> EdgeInsets.fromLTRB(<span class="number">8.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>),</span><br><span class="line"> child:Text(<span class="string">'Element 1'</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><strong>Scaffold</strong></li>
+</ol>
+<p>A Scaffold Widget provides a framework for adding common material design elements<br>such as <strong>AppBar,Drawer,Floating Action Buttons,Bottom Navigation,etc.</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Scaffold(</span><br><span class="line"> appBar:AppBar(</span><br><span class="line">  title:Text(widget.title),</span><br><span class="line"> ),</span><br><span class="line"> body:Center(),</span><br><span class="line"> floatingActionButton:FloatingActionButton(</span><br><span class="line">  child:Icon(Icons.add),</span><br><span class="line">  onPressed:()&#123;&#125;</span><br><span class="line"> ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Adding material elements becomes easier using a Scaffold.</p>
+<img src="/2019/02/26/Basic/scoffold.png" width="200" height="100">
+<ol start="6">
+<li><strong>Stack</strong></li>
+</ol>
+<p>A Stack is used to overlap widgets,like a button on a background gradient.A<br>Stack is a very important widget.</p>
+<p>These are the basic widgets required to make a decent functioning app in<br>Flutter.Flutter also allows you to make your own widgets if you need any<br>other functionality added or if you want to reuse some repeating widget<br>pattern.</p>
+<p>For the complete list of Flutter widgets,visit <a href="https://flutter.dev/docs/development/ui/widgets" target="_blank" rel="noopener">this link.</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="true" data-ci="3219b331c6fa32d69c16" data-cs="943ecde7ea4b66cc0a98ecbb5e027b06db8f5508" data-r="ivivisoft.github.io" data-o="ivivisoft" data-a="ivivisoft" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
