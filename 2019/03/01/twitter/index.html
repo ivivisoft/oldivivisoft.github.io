@@ -80,7 +80,7 @@
 <p>The HomePage will have a Scaffold that will hold our main<br>BottomNavigationBar and whatever page is currently active.</p>
 <h3 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h3><p>Because the Bottom Navigation Bar is main widget used to navigate,let’s<br>try that first.</p>
 <p>Here’s how the BottomNavigationBar looks like:</p>
-<img src="/2019/03/01/twitter/twitter_bottom_navigation.jpeg" width="200" height="100">
+
 <p><br><br>Because we don’t have the exact icons used in the app,we’ll go with the <a href="https://pub.dartlang.org/packages/font_awesome_flutter" target="_blank" rel="noopener">Font Flutter<br>Awesome Package.</a>Add the dependency in the pubspec.yaml and add</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:font_awesome_flutter/font_awesome_flutter.dart'</span>;</span><br></pre></td></tr></table></figure>
 <p>to the main.dart.</p>
@@ -90,7 +90,7 @@
 <p>Notice when we set the color of the icons,we check if the icon is selected and<br>then assign colors.In the twitter app,selected icon is blue and let’s set<br>unselected ones to blueGrey.</p>
 <p>We define a integer called selectedPageIndex which stores the index of the<br>page selected.In the onTop function,we set the variable to the new index.It is<br>wrapped in a setState() call as we need a refresh of the page to re-render the AppBar.</p>
 <p>Here is our Bottom Navigation Bar:</p>
-<img src="/2019/03/01/twitter/twitter_appbar.png" width="200" height="100">
+
 <h3 id="Setting-Up-The-Pages"><a href="#Setting-Up-The-Pages" class="headerlink" title="Setting Up The Pages"></a>Setting Up The Pages</h3><p>Let’s set up the four basic pages which will be displayed when the respective icons are clicked.</p>
 <p>We set up four pages (in different files) like this:</p>
 <p>For the user feed(home) page:</p>
@@ -109,10 +109,10 @@
 <p>First let’s make the AppBar,It has a user profile picture and a black title with a white background.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">appBar: AppBar(</span><br><span class="line">        backgroundColor: Colors.white,</span><br><span class="line">        title: Text(</span><br><span class="line">          <span class="string">'Home'</span>,</span><br><span class="line">          style: TextStyle(color: Colors.black),</span><br><span class="line">        ),</span><br><span class="line">        leading: Icon(Icons.account_circle, color: Colors.grey, size: <span class="number">35.0</span>),</span><br><span class="line">      ),</span><br></pre></td></tr></table></figure>
 <p>We’ll use an icon instead of a profile picture.</p>
-<img src="/2019/03/01/twitter/the_recreate_app_bar.png" width="200" height="100">
+
 <p><br><br>Now,we need to create the list of tweets.For this we use a ListView.builder().</p>
 <p>Let’s take a look at the list item.</p>
-<img src="/2019/03/01/twitter/check_list_view_item.jpeg" width="200" height="100">
+
 <p><br><br>First,we’ll have a column with a row and a divider you see at the bottom.</p>
 <p>Inside the row,we’ll have the user icon and another column.</p>
 <p>The column will hold a row for tweet information,a text with the tweet itself,<br>an image and another row for actions to take on tweet(like,comment,etc.).</p>

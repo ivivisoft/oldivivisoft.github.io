@@ -65,7 +65,7 @@
             <h3 id="Introduction-ti-TextField"><a href="#Introduction-ti-TextField" class="headerlink" title="Introduction ti TextField"></a>Introduction ti TextField</h3><p>A TextField widget allows collection of information from the user.The code<br>for a basic TextField is as simple as:</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextField()</span><br></pre></td></tr></table></figure>
 <p><em>This creates a basic TextField:</em></p>
-<img src="/2019/02/20/TextField/textfield.png" width="200" height="100">
+
 <h3 id="Retrieving-information-from-a-TextField"><a href="#Retrieving-information-from-a-TextField" class="headerlink" title="Retrieving information from a TextField"></a>Retrieving information from a TextField</h3><p>Since TextFields do not have an ID like in Android,text cannot be retrieved<br>upon demand and must instead be stored in a variable on change or use a<br>controller.</p>
 <ol>
 <li>The easiest way to do this is to use the <strong>onChanged</strong> method and store the<br>current value in a simple variable.Here is the sample code for it:</li>
@@ -86,7 +86,7 @@
 <h4 id="Working-with-autofocus"><a href="#Working-with-autofocus" class="headerlink" title="Working with autofocus"></a>Working with autofocus</h4><p>The autofocus on a TextField when the widget is created,set the autofocus field<br>to <strong>true</strong>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> autofocus:<span class="keyword">true</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>This sets the focus on the TextField by default.</p>
-<img src="/2019/02/20/TextField/textfield_autofocus.gif" width="200" height="100">
+
 <h4 id="Working-with-custom-focus-changes"><a href="#Working-with-custom-focus-changes" class="headerlink" title="Working with custom focus changes"></a>Working with custom focus changes</h4><p>What if we want to change the focus on demand and not just autofocus? Since<br>we need some way to refer <strong>which</strong> <em>TextField</em> we want to focus to next,we<br>attach a <strong>FocusNode</strong> to the <em>TextField</em> and use it to switch the focus.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Initialise outside the build method</span></span><br><span class="line">  FocusNode nodeOne = FocusNode();</span><br><span class="line">  FocusNode nodeTwo = FocusNode();</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">'Deep Dive Flutter'</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: Column(</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          TextField(</span><br><span class="line">            focusNode: nodeOne,</span><br><span class="line">          ),</span><br><span class="line">          TextField(</span><br><span class="line">            focusNode: nodeTwo,</span><br><span class="line">          ),</span><br><span class="line">          RaisedButton(</span><br><span class="line">            onPressed: () &#123;</span><br><span class="line">              FocusScope.of(context).requestFocus(nodeTwo);</span><br><span class="line">            &#125;,</span><br><span class="line">            child: Text(<span class="string">'Next Field'</span>),</span><br><span class="line">          )</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>We create two focus nodes and attach them to the <em>TextField</em>. When the<br>button is pressed,we use <em>FocusScope</em> to request focus to the next <em>TextField</em>.</p>
@@ -108,11 +108,11 @@
 <p>As an example:</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> textInputAction:TextInputAction.continueAction,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>This causes the “Done” button to be replaced by “Continue” button:</p>
-<img src="/2019/02/20/TextField/textfield_continue.png" width="200" height="100">
+
 <p>Or</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextFiled(</span><br><span class="line"> textInputAction:TextInputAction.send,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>Causes</p>
-<img src="/2019/02/20/TextField/textfield_send.png" width="200" height="100">
+
 <p>The complete list is too large to be displayed here,but do be sure to check it<br>out.</p>
 <h4 id="Autocorrect"><a href="#Autocorrect" class="headerlink" title="Autocorrect"></a>Autocorrect</h4><p>Enables or disables <strong>autocorrect</strong> for the specific <em>TextField</em>.Use the autocorrect<br>field to set this.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> autocorrect:<span class="keyword">false</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
@@ -124,68 +124,68 @@
 <li><strong>TextCapitalization.sentences</strong></li>
 </ol>
 <p>This is the normal type of capitalization we expect,the first letter of every<br>sentence being capitalised.</p>
-<img src="/2019/02/20/TextField/textfield_capitalization_sentences.png" width="200" height="100">
+
 <ol start="2">
 <li><strong>TextCapitalization.characters</strong></li>
 </ol>
 <p>Capitalises all characters in the sentences.</p>
-<img src="/2019/02/20/TextField/textfield_capitalization_characters.png" width="200" height="100">
+
 <ol start="3">
 <li><strong>TextCapitalization.words</strong></li>
 </ol>
 <p>Capitalises the first letter of each word.</p>
-<img src="/2019/02/20/TextField/textfield_capitalization_words.png" width="200" height="100">
+
 <h3 id="Text-Style-Alignment-and-Cursor-Options"><a href="#Text-Style-Alignment-and-Cursor-Options" class="headerlink" title="Text Style,Alignment and Cursor Options"></a>Text Style,Alignment and Cursor Options</h3><p>Flutter allows customisation pertaining to the styling and alignment of text<br>inside the <em>TextField</em> as well as the cursor inside the <em>TextField</em>.</p>
 <h4 id="Text-alignment-inside-the-TextField"><a href="#Text-alignment-inside-the-TextField" class="headerlink" title="Text alignment inside the TextField"></a>Text alignment inside the TextField</h4><p>Use the <strong>textAlign</strong> property to adjust where cursor is inside the <em>TextField</em>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> textAlign: TextAlign.center,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>This causes the cursor and text to start in the middle of the <em>TextField</em>.</p>
-<img src="/2019/02/20/TextField/textfield_align_center.png" width="200" height="100">
+
 <p>This has the usual alignment properties:<strong>start,end,left,right,center,justify</strong>.</p>
 <h4 id="Styling-the-text-inside-the-TextField"><a href="#Styling-the-text-inside-the-TextField" class="headerlink" title="Styling the text inside the TextField"></a>Styling the text inside the TextField</h4><p>We use the <strong>style</strong> property to change how the text inside the <em>TextField</em> looks.<br>Use it to change the color,font size,font weight,etc.This is similar to the style<br>property in the <em>Text</em> widget so we will not spend too much time exploring it.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> style:TextStyle(color:Colors.red,fontWeight:FontWeight.w300),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_inside_textstyle.png" width="200" height="100">
+
 <h4 id="Changing-the-cursor-in-the-TextField"><a href="#Changing-the-cursor-in-the-TextField" class="headerlink" title="Changing the cursor in the TextField"></a>Changing the cursor in the TextField</h4><p>The cursor is customisable directly from the <em>TextField</em> widget.</p>
 <p>You are allowed to change the cursor color,width and radius of the corners.<br>For example,here I make a circular red cursor for no apparent reason.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> cursorColor:Colors.red,</span><br><span class="line"> cursorRadius:Radius.circular(<span class="number">16.0</span>),</span><br><span class="line"> cursorWidth:<span class="number">16.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_cursor.png" width="200" height="100">
+
 <h3 id="Controlling-the-Size-and-Maximum-Length-in-a-TextField"><a href="#Controlling-the-Size-and-Maximum-Length-in-a-TextField" class="headerlink" title="Controlling the Size and Maximum Length in a TextField"></a>Controlling the Size and Maximum Length in a TextField</h3><p><em>TextField</em> can control the maximum number of characters written inside it,<br>the maximum number of lines and expand as text is typed.</p>
 <h4 id="Controlling-max-characters"><a href="#Controlling-max-characters" class="headerlink" title="Controlling max characters"></a>Controlling max characters</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> maxLength:<span class="number">4</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_maxlength.png" width="200" height="100">
+
 <p>By setting the <strong>maxLength</strong> property, a maximun length is enforced and a<br>counter(IOS) is added by default to the <em>TextField</em>.</p>
 <h4 id="Making-an-expandable-TextField"><a href="#Making-an-expandable-TextField" class="headerlink" title="Making an expandable TextField"></a>Making an expandable TextField</h4><p>Sometimes,we need a <em>TextField</em> that expands when one line is finished.In<br>Flutter it is slight odd(yet easy) to do.To do this,<strong>We set maxLines to null</strong>,<br>which is <strong>1</strong> by default.Setting to null is not something we’re very used to but<br>nevertheless it’s easy to do.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> maxLines:<span class="keyword">null</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_maxlines_null.png" width="200" height="100">
+
 <p><strong>Note: Setting the maxLines to a direct value will expand it to that number<br>of lines by default</strong>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> maxLines:<span class="number">3</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_maxlines_3.png" width="200" height="100">
+
 <h3 id="Obscuring-Text"><a href="#Obscuring-Text" class="headerlink" title="Obscuring Text"></a>Obscuring Text</h3><p>To obscure text in a TextField,set <strong>obscureText</strong> to <em>true</em>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> obscureText:<span class="keyword">true</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_obscure.png" width="200" height="100">
+
 <h3 id="And-Finally-Decorating-the-TextField"><a href="#And-Finally-Decorating-the-TextField" class="headerlink" title="And Finally,Decorating the TextField"></a>And Finally,Decorating the TextField</h3><p>Till now we focused on the features Flutter offers for input.Now we’ll move to<br>actually designing a fancy <em>TextField</em> and not saying no to your designer.</p>
 <p>For decorting the <em>TextField</em>,we use the <strong>decoration</strong> property which takes an<br><strong>InputDecoration</strong>.Since the <strong>InputDecoration</strong> class is enormous,we’ll try to<br>quickly go over most of the important properties.</p>
 <h4 id="Use-the-hint-and-label-properties-to-give-information-to-the-user"><a href="#Use-the-hint-and-label-properties-to-give-information-to-the-user" class="headerlink" title="Use the hint and label properties to give information to the user"></a>Use the hint and label properties to give information to the user</h4><p>Both hint and label are strings which help the user understand the information<br>to be entered in the <em>TextField</em>.The difference is that a hint disappears once<br>the user starts typing while a label floats over the *TextField**.</p>
 <p><em>Hint</em>:</p>
-<img src="/2019/02/20/TextField/textfield_hint.png" width="200" height="100">
+
 <p><em>Label</em>:</p>
-<img src="/2019/02/20/TextField/textfield_label.png" width="200" height="100">
+
 <h4 id="You-can-add-icons-using-“icon”-”prefixIcon”-and-“suffixIcon”"><a href="#You-can-add-icons-using-“icon”-”prefixIcon”-and-“suffixIcon”" class="headerlink" title="You can add icons using “icon”,”prefixIcon” and “suffixIcon”"></a>You can add icons using “icon”,”prefixIcon” and “suffixIcon”</h4><p>You can add icons directly to <em>TextField</em>.You can also use <strong>prefixText</strong> and<br><strong>suffixText</strong> for <strong>Text</strong> instead.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  icon:Icon(Icons.<span class="built_in">print</span>)</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_decoration_icon.png" width="200" height="100">
+
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  prefixIcon:Icon(Icons.<span class="built_in">print</span>)</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_decoration_prefixicon.png" width="200" height="100">
+
 <h4 id="Simiarly-for-any-other-widget-use-“prefix”-instead-of-“prefixIcon”"><a href="#Simiarly-for-any-other-widget-use-“prefix”-instead-of-“prefixIcon”" class="headerlink" title="Simiarly for any other widget,use “prefix” instead of “prefixIcon”"></a>Simiarly for any other widget,use “prefix” instead of “prefixIcon”</h4><p>To use a generic widget instead of an icon,use the <strong>prefix</strong> field.Again for no<br>apparent reason,let’s add a circular progress indicator in a <em>TextField</em>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  prefix:CircularProgressIndicator()</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_prefix.png" width="200" height="100">
+
 <h4 id="Each-property-like-hint-label-etc-has-its-respective-style-fields"><a href="#Each-property-like-hint-label-etc-has-its-respective-style-fields" class="headerlink" title="Each property like hint,label,etc has its respective style fields"></a>Each property like hint,label,etc has its respective style fields</h4><p>To style a hint,use a <strong>hintStyle</strong>.To style a label,use a <strong>labelStyle</strong>.</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  hintText:<span class="string">"Demo Text"</span>,</span><br><span class="line">  hintStyle:TextStyle(</span><br><span class="line">   fontWeight:FontWeight.w300,</span><br><span class="line">   color: Colors.red</span><br><span class="line">  )</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_hint_style.png" width="200" height="100">
+
 <p><strong>Note:Although I have done it in this example,generally do not change<br>the hint color as it is confusing to users</strong>.</p>
 <h4 id="Use-“helperText”-if-you-do-not-want-a-label-but-you-want-a-persistingmessage-for-the-user"><a href="#Use-“helperText”-if-you-do-not-want-a-label-but-you-want-a-persistingmessage-for-the-user" class="headerlink" title="Use “helperText” if you do not want a label but you want a persistingmessage for the user"></a>Use “helperText” if you do not want a label but you want a persisting<br>message for the user</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  helperText:<span class="string">"Hello"</span>,</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_helper_text.png" width="200" height="100">
+
 <h4 id="Use-“decoration-null”-or-InputDecoration-collapsed-to-remove-thedefault-underline-on-a-TextField"><a href="#Use-“decoration-null”-or-InputDecoration-collapsed-to-remove-thedefault-underline-on-a-TextField" class="headerlink" title="Use “decoration:null” or InputDecoration.collapsed to remove thedefault underline on a TextField"></a>Use “decoration:null” or InputDecoration.collapsed to remove the<br>default underline on a TextField</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration.collapsed(hintText:<span class="string">""</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_decoration_null.png" width="200" height="100">
+
 <h4 id="Use-“border”-to-give-a-border-to-the-TextField"><a href="#Use-“border”-to-give-a-border-to-the-TextField" class="headerlink" title="Use “border” to give a border to the TextField"></a>Use “border” to give a border to the TextField</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line"> decoration:InputDecoration(</span><br><span class="line">  border:OutlineInputBorder()</span><br><span class="line"> )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/20/TextField/textfield_decoration_border.png" width="200" height="100">
+
 <p>There is a vast amount of decoration you can do further,So you can easy<br>to customise Flutter <em>TextField</em>.</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
